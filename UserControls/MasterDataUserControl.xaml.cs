@@ -39,18 +39,57 @@ namespace ShopManagementApp.UserControls
             {
                 //TODO
                 case MasterDataAction.AddNewCategory:
+                    AddNewCategory();
                     break;
                 case MasterDataAction.DeleteSelectedCategory:
+                    DeleteSelectedCategory();
                     break;
                 case MasterDataAction.AddNewProduct:
+                    AddNewProduct();
                     break;
                 case MasterDataAction.EditSelectedProduct:
+                    EditSelectedProduct();
                     break;
                 case MasterDataAction.DeleteSelectedProduct:
+                    DeleteSelectedProduct();
                     break;
                 default:
                     break;
             }
+        }
+
+        private void AddNewCategory()
+        {
+            var screen = new AddNewCategoryDialogWindow();
+            if (screen.ShowDialog() == true)
+            {
+                if (screen.NewCategory is Category)
+                {
+                    _db.Categories.Add(screen.NewCategory);
+                    _db.SaveChanges();
+                    ReloadInitialize();
+                }
+            }
+        }
+
+        private void DeleteSelectedCategory()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddNewProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void EditSelectedProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteSelectedProduct()
+        {
+            throw new NotImplementedException();
         }
 
         private readonly MyShopEntities _db = new MyShopEntities();
@@ -96,13 +135,22 @@ namespace ShopManagementApp.UserControls
         {
             var category = CategoryComboBox.SelectedItem as Category;
             _totalProducts = category.Products.Count;
-            _totalPages = _totalProducts / _rowsPerPage;
-            if ((_totalProducts % _rowsPerPage) != 0) _totalPages++;
-            _currentPage = 1;
+            if (_totalProducts == 0)
+            {
+                PageSelectComboBox.ItemsSource = null;
+                ProductsDataGrid.ItemsSource = null;
+                _totalPages = 0;
+            }
+            else
+            {
+                _totalPages = _totalProducts / _rowsPerPage;
+                if ((_totalProducts % _rowsPerPage) != 0) _totalPages++;
+                _currentPage = 1;
 
-            var pagingInfo = new PagingInfo(_totalPages);
-            PageSelectComboBox.ItemsSource = pagingInfo.Items;
-            PageSelectComboBox.SelectedIndex = _currentPage - 1;
+                var pagingInfo = new PagingInfo(_totalPages);
+                PageSelectComboBox.ItemsSource = pagingInfo.Items;
+                PageSelectComboBox.SelectedIndex = _currentPage - 1;
+            }
         }
         private void PageSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
