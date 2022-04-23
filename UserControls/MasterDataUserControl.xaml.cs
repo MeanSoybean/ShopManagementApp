@@ -20,9 +20,36 @@ namespace ShopManagementApp.UserControls
     /// </summary>
     public partial class MasterDataUserControl : UserControl
     {
+        public enum MasterDataAction
+        {
+            AddNewCategory,
+            DeleteSelectedCategory,
+            AddNewProduct,
+            EditSelectedProduct,
+            DeleteSelectedProduct,
+        }
         public MasterDataUserControl()
         {
             InitializeComponent();
+        }
+        public void HandleParentEvent(MasterDataAction action)
+        {
+            switch (action)
+            {
+                //TODO
+                case MasterDataAction.AddNewCategory:
+                    break;
+                case MasterDataAction.DeleteSelectedCategory:
+                    break;
+                case MasterDataAction.AddNewProduct:
+                    break;
+                case MasterDataAction.EditSelectedProduct:
+                    break;
+                case MasterDataAction.DeleteSelectedProduct:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
