@@ -30,21 +30,27 @@ namespace ShopManagementApp
             InitializeComponent();
         }
 
+        private ObservableCollection<TabItem> screens;
+        private MasterDataUserControl masterDataUserControl;
+        private SalesUserControl salesUserControl;
+        private ReportUserControl reportUserControl;
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
-            var screens = new ObservableCollection<TabItem>()
+            masterDataUserControl = new MasterDataUserControl();
+            salesUserControl = new SalesUserControl();
+            reportUserControl = new ReportUserControl();
+            screens = new ObservableCollection<TabItem>()
             {
-                new TabItem() { Content = new MasterDataUserControl() },
-                new TabItem() { Content = new SalesUserControl() },
-                new TabItem() { Content = new ReportUserControl() },
+                new TabItem() { Name="MasterDataUserControl", Content = masterDataUserControl },
+                new TabItem() { Name="SalesUserControl", Content = salesUserControl },
+                new TabItem() { Name="ReportUserControl", Content = reportUserControl },
             };
             Tabs.ItemsSource=screens;
         }
 
         private void ExitMenu_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            Close();
         }
 
         private void ExcelImportButton_Clicked(object sender, RoutedEventArgs e)
@@ -114,7 +120,7 @@ namespace ShopManagementApp
 
             MessageBox.Show($"Added {categories.Count} categories and {productCount} products to the system.", "Import Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            //TODO: reload the data on the view
+            masterDataUserControl.ReloadInitialize();
         }
 
         private string GetFileNameFromOpenFileDialog()
@@ -130,27 +136,37 @@ namespace ShopManagementApp
 
         private void AddCategoryButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            masterDataUserControl.HandleParentEvent(
+                MasterDataUserControl.MasterDataAction.AddNewCategory
+                );
         }
 
         private void DeleteCategoryButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            masterDataUserControl.HandleParentEvent(
+                MasterDataUserControl.MasterDataAction.DeleteSelectedCategory
+                );
         }
 
         private void AddProductButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            masterDataUserControl.HandleParentEvent(
+                MasterDataUserControl.MasterDataAction.AddNewProduct
+                );
         }
 
         private void EditProductButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            masterDataUserControl.HandleParentEvent(
+                MasterDataUserControl.MasterDataAction.EditSelectedProduct
+                );
         }
 
         private void DeleteProductButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            masterDataUserControl.HandleParentEvent(
+                MasterDataUserControl.MasterDataAction.DeleteSelectedProduct
+                );
         }
     }
 }

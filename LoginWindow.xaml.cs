@@ -31,7 +31,6 @@ namespace ShopManagementApp
             InitializeComponent();
         }
         
-
         private void Button1_Click(object sender, EventArgs e)
         {
 
@@ -161,7 +160,6 @@ namespace ShopManagementApp
                 MessageBox.Show("Wrong username");
             }
         }
-
         class AppConfig
         {
             public static string Server = "Server";
@@ -198,7 +196,7 @@ namespace ShopManagementApp
 
             public static string? ConnectionString()
             {
-                string? result = "";
+                string? result;
 
                 var builder = new SqlConnectionStringBuilder();
                 string? server = AppConfig.GetValue(AppConfig.Server);
@@ -211,14 +209,11 @@ namespace ShopManagementApp
                 builder.InitialCatalog = database;
                 builder.UserID = username;
                 builder.Password = password;
-                //  builder.IntegratedSecurity = true;
-                // builder.ConnectTimeout = 3; // s
 
                 result = builder.ToString();
                 return result;
             }
         }
-
 
         class SqlDataAccess
         {
@@ -241,7 +236,7 @@ namespace ShopManagementApp
                     _connection.Open();
                     _connection.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     result = false;
                 }
@@ -280,14 +275,6 @@ namespace ShopManagementApp
             }
         }
 
-
-        // DTO - Data transfer object
-        class Category
-        {
-            public int ID { get; set; }
-            public string Name { get; set; }
-        }
-
         // Business layer
         class Business
         {
@@ -308,9 +295,6 @@ namespace ShopManagementApp
 
         Business _bus = null;
 
-
-
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //textBox1.Text = "UserName";
@@ -325,7 +309,7 @@ namespace ShopManagementApp
             }
         }
 
-        static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("Salt Is Not A Password");
+        static readonly byte[] entropy = System.Text.Encoding.Unicode.GetBytes("Salt Is Not A Password");
 
         public static string EncryptString(System.Security.SecureString input)
         {

@@ -5,8 +5,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopManagementApp.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Initialized="MasterDataUserControl_Initialized">
+    <DockPanel LastChildFill="True">
+        <DockPanel x:Name="ProductInformationStackPanel" DockPanel.Dock="Right" Width="350" Background="AliceBlue">
+            <Label DockPanel.Dock="Top" FontSize="20">Product Information</Label>
+            <StackPanel DockPanel.Dock="Bottom"
+                        DataContext="{Binding ElementName=ProductsDataGrid, Path=SelectedItem}">
+                <Label Margin="5,0,5,0">Product Name:</Label>
+                <TextBox Margin="5,0,5,5" Text="{Binding Name}"/>
+                <Label Margin="5,0,5,0">Product Price:</Label>
+                <TextBox Margin="5,0,5,5" Text="{Binding Price}"/>
+                <Label Margin="5,0,5,0">Product Quantity:</Label>
+                <TextBox Margin="5,0,5,5" Text="{Binding Quantity}"/>
+            </StackPanel>
+            <Border Padding="20" DockPanel.Dock="Top">
+                <Image Source="/Images/greenplus.png"></Image>
+            </Border>
+        </DockPanel>
+        <DockPanel x:Name="CategoryDockPanel" Background="FloralWhite" LastChildFill="True">
+            <Border DockPanel.Dock="Top" Margin="10" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Background="#F5F5F5">
+                <StackPanel x:Name="CategorySelectorStackPanel" Orientation="Horizontal">
+                    <Label>Category:</Label>
+                    <ComboBox x:Name="CategoryComboBox" MinWidth="100" SelectionChanged="CategoryComboBox_SelectionChanged"/>
+                </StackPanel>
+            </Border>
+            <Border DockPanel.Dock="Bottom" Margin="10" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Background="#F5F5F5">
+                <UniformGrid x:Name="PageControls" Rows="1">
+                    <Button x:Name="PreviousPageButton" Margin="20,0,0,0" MinWidth="100" Click="PreviousPageButton_Click">Previous</Button>
+                    <ComboBox x:Name="PageSelectComboBox" Margin="20,0,20,0" MinWidth="50" SelectionChanged="PageSelectComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Page: "/>
+                                    <TextBlock Text="{Binding Page}"/>
+                                    <TextBlock Text="/"/>
+                                    <TextBlock Text="{Binding TotalPages}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button x:Name="NextPageButton" Margin="0,0,20,0" MinWidth="100" Click="NextPageButton_Click">Next</Button>
+                </UniformGrid>
+            </Border>
+            <Border Margin="10" Padding="10" CornerRadius="10" BorderThickness="1" BorderBrush="LightGray" Background="#F5F5F5">
+                <DataGrid x:Name="ProductsDataGrid" DockPanel.Dock="Bottom"
+                          IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" AutoGenerateColumns="False"
+                          DataContext="{Binding ElementName=ProductsDataGrid, Path=SelectedItem}"
+                          SelectedCellsChanged="ProductsDataGrid_SelectedCellsChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </DockPanel>
+    </DockPanel>
 </UserControl>
