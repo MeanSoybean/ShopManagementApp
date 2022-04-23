@@ -74,7 +74,18 @@ namespace ShopManagementApp.UserControls
 
         private void DeleteSelectedCategory()
         {
-            throw new NotImplementedException();
+            var category = CategoryComboBox.SelectedItem as Category;
+            if (category == null) return;
+
+            var result = MessageBox.Show(
+                $"Delete category {category.Name}? This action can't be undone.",
+                "Confirm Deletion", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                _db.Categories.Remove(category);
+                _db.SaveChanges();
+                ReloadInitialize();
+            }
         }
 
         private void AddNewProduct()
@@ -100,8 +111,17 @@ namespace ShopManagementApp.UserControls
 
         public void ReloadInitialize()
         {
-            CategoryComboBox.ItemsSource = _db.Categories.ToList();
-            CategoryComboBox.SelectedIndex = 0;
+            if (_db.Categories.Count() > 0)
+            {
+                CategoryComboBox.ItemsSource = _db.Categories.ToList();
+                CategoryComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                CategoryComboBox.ItemsSource = null;
+                PageSelectComboBox.ItemsSource = null;
+                ProductsDataGrid.ItemsSource = null;
+            }
         }
 
         class PagingRow
@@ -134,6 +154,7 @@ namespace ShopManagementApp.UserControls
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var category = CategoryComboBox.SelectedItem as Category;
+            if (category == null) return;
             _totalProducts = category.Products.Count;
             if (_totalProducts == 0)
             {
