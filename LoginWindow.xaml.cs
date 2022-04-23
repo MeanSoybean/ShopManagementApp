@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 namespace ShopManagementApp
 {
     /// <summary>
@@ -29,9 +30,9 @@ namespace ShopManagementApp
         {
             InitializeComponent();
         }
+        
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
 
             string user1 = AppConfig.GetValue(AppConfig.username1);
@@ -55,16 +56,16 @@ namespace ShopManagementApp
                             Properties.Settings.Default.username = textBoxUser.Text;
                             Properties.Settings.Default.password = EncryptString(ToSecureString(passwordBox1.Password));
                             Properties.Settings.Default.Save();
-
                         }
                         else if (checkBox1.IsChecked == false)
                         {
                             Properties.Settings.Default.username = "";
                             Properties.Settings.Default.password = "";
                             Properties.Settings.Default.Save();
-
                         }
-
+                        AdminDashboard mainWindow = new AdminDashboard();
+                        mainWindow.Show();
+                        Close();
                     }
                     else
                     {
@@ -73,10 +74,7 @@ namespace ShopManagementApp
                         Properties.Settings.Default.Save();
                         MessageBox.Show("Wrong password");
                     }
-
-
                 }
-
 
                 if (textBoxUser.Text.Equals(user2))
                 {
@@ -157,20 +155,7 @@ namespace ShopManagementApp
                 Properties.Settings.Default.Save();
                 MessageBox.Show("Wrong username");
             }
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
 
         class AppConfig
         {
@@ -227,7 +212,6 @@ namespace ShopManagementApp
             }
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //textBox1.Text = "UserName";
@@ -241,16 +225,6 @@ namespace ShopManagementApp
                 passwordBox1.Password = readable;
             }
         }
-
-
-
-
-
-
-
-
-
-
 
         static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("Salt Is Not A Password");
 
@@ -304,7 +278,5 @@ namespace ShopManagementApp
             }
             return returnValue;
         }
-
-
     }
 }

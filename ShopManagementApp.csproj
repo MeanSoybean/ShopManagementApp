@@ -19,9 +19,9 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
-  <Nullable>enable</Nullable>
-  <LangVersion>8.0</LangVersion>
-</PropertyGroup>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +90,9 @@
     </ApplicationDefinition>
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -164,9 +167,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\MyShopDatasheet.xlsx">
+    <None Include="Assets\MyShopDatasheet.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -194,54 +197,150 @@
     <Resource Include="Images\bluepencil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Products\amazonbasics_3.5mm_maletomale_4ft.jpg" />
-    <Resource Include="Images\Products\amazonbasics_36pack_AAAbatteries.jpg" />
-    <Resource Include="Images\Products\amazonbasics_8pack_9Vbatteries.jpg" />
-    <Resource Include="Images\Products\amazonbasics_aframe_guitarstand.jpg" />
-    <Resource Include="Images\Products\amazonbasics_xlr_maletofemale_6ft.jpg" />
-    <Resource Include="Images\Products\aot_colossal_7.jpg" />
-    <Resource Include="Images\Products\apple_airpods_2ndgen.jpg" />
-    <Resource Include="Images\Products\apple_lightning_3.5mmheadphonejack_adapter.jpg" />
-    <Resource Include="Images\Products\apple_pencil_1stgen.jpg" />
-    <Resource Include="Images\Products\audio-technica_at2020_cardioidcondenser_microphone.jpg" />
-    <Resource Include="Images\Products\behringer_u-phoria_umc404hd_interface.jpg" />
-    <Resource Include="Images\Products\bestway_saluspa_inflatablehottub.jpg" />
-    <Resource Include="Images\Products\bountyhunter_metaldetector.jpg" />
-    <Resource Include="Images\Products\coldsteel_axe.jpg" />
-    <Resource Include="Images\Products\flexzilla_hfzg503yw_leadinhose_3ft.jpg" />
-    <Resource Include="Images\Products\georgeforeman_ggr50b_electricgrill.jpg" />
-    <Resource Include="Images\Products\hefty_strong_lawnandleaf_trashbag.jpg" />
-    <Resource Include="Images\Products\hp_63_tricolor_black_ink.jpg" />
-    <Resource Include="Images\Products\hyperx_quadcast_condensermic_redled.jpg" />
-    <Resource Include="Images\Products\intex_rainbow_inflatable_playcenter.jpg" />
-    <Resource Include="Images\Products\it_ends_with_us_1.jpg" />
-    <Resource Include="Images\Products\it_ends_with_us_2.jpg" />
-    <Resource Include="Images\Products\last_elligible_billionaire.jpg" />
-    <Resource Include="Images\Products\logitech_bluesnowballice_microphone_black.jpg" />
-    <Resource Include="Images\Products\logitech_bluesnowballice_microphone_white.jpg" />
-    <Resource Include="Images\Products\logitech_blueyeti_mic.jpg" />
-    <Resource Include="Images\Products\logitech_h390_headphones.jpg" />
-    <Resource Include="Images\Products\natgeo_21stcentury_image_collection.jpg" />
-    <Resource Include="Images\Products\novelty_30601_green_wateringcan.jpg" />
-    <Resource Include="Images\Products\panasonic_ergofit_rp-hje120-d_earbudheadphones_orange.jpg" />
-    <Resource Include="Images\Products\panasonic_ergofit_wiredearbuds_black.jpg" />
-    <Resource Include="Images\Products\ps4_dualshock4_wireless_jetblack.jpg" />
-    <Resource Include="Images\Products\ravaged_crown.jpg" />
-    <Resource Include="Images\Products\rivet_geometric_ceramic_pot.jpg" />
-    <Resource Include="Images\Products\rivet_rustic_stoneware_pot.jpg" />
-    <Resource Include="Images\Products\samsung_970EVOplus_SSD.jpg" />
-    <Resource Include="Images\Products\sandisk_extremepro_128gb_sdxc.jpg" />
-    <Resource Include="Images\Products\scotch_heavydutytape.jpg" />
-    <Resource Include="Images\Products\seagate_2TB_HDD.jpg" />
-    <Resource Include="Images\Products\sony_mdr7506_largediaphragm_headphone.jpg" />
-    <Resource Include="Images\Products\strangers_we_know.jpg" />
-    <Resource Include="Images\Products\subtleartngaf.jpg" />
-    <Resource Include="Images\Products\sunjoe_spx3000_highpressurewasher.jpg" />
-    <Resource Include="Images\Products\thermopro_tp20_meatthermometer.jpg" />
-    <Resource Include="Images\Products\the_handmaids_tale.jpg" />
-    <Resource Include="Images\Products\the_investigator.jpg" />
-    <Resource Include="Images\Products\the_locked_door.jpg" />
-    <Resource Include="Images\Products\things_we_never_got_over.jpg" />
+    <None Include="Images\Products\amazonbasics_3.5mm_maletomale_4ft.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\amazonbasics_36pack_AAAbatteries.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\amazonbasics_8pack_9Vbatteries.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\amazonbasics_aframe_guitarstand.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\amazonbasics_xlr_maletofemale_6ft.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\aot_colossal_7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\apple_airpods_2ndgen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\apple_lightning_3.5mmheadphonejack_adapter.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\apple_pencil_1stgen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\audio-technica_at2020_cardioidcondenser_microphone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\behringer_u-phoria_umc404hd_interface.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\bestway_saluspa_inflatablehottub.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\bountyhunter_metaldetector.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\coldsteel_axe.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\flexzilla_hfzg503yw_leadinhose_3ft.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\georgeforeman_ggr50b_electricgrill.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\hefty_strong_lawnandleaf_trashbag.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\hp_63_tricolor_black_ink.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\hyperx_quadcast_condensermic_redled.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\intex_rainbow_inflatable_playcenter.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\it_ends_with_us_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\it_ends_with_us_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\last_elligible_billionaire.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\logitech_bluesnowballice_microphone_black.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\logitech_bluesnowballice_microphone_white.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\logitech_blueyeti_mic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\logitech_h390_headphones.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\natgeo_21stcentury_image_collection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\novelty_30601_green_wateringcan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\panasonic_ergofit_rp-hje120-d_earbudheadphones_orange.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\panasonic_ergofit_wiredearbuds_black.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\ps4_dualshock4_wireless_jetblack.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\ravaged_crown.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\rivet_geometric_ceramic_pot.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\rivet_rustic_stoneware_pot.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\samsung_970EVOplus_SSD.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\sandisk_extremepro_128gb_sdxc.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\scotch_heavydutytape.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\seagate_2TB_HDD.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\sony_mdr7506_largediaphragm_headphone.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\strangers_we_know.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\subtleartngaf.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\sunjoe_spx3000_highpressurewasher.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\thermopro_tp20_meatthermometer.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\the_handmaids_tale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\the_investigator.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\the_locked_door.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\Products\things_we_never_got_over.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

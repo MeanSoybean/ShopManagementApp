@@ -14,6 +14,6 @@
         <PasswordBox Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="247" />
         <CheckBox Name="checkBox1" Canvas.Left="269" Canvas.Top="214" Content="Remember me"  >
         </CheckBox>
-        <Button Content="Login" Height="23" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Top" Width="104" Click="button1_Click" RenderTransformOrigin="0.496,1.694" Canvas.Left="118" Canvas.Top="249" />
+        <Button Content="Login" Height="23" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Top" Width="104" Click="Button1_Click" RenderTransformOrigin="0.496,1.694" Canvas.Left="118" Canvas.Top="249" />
     </Canvas>
 </Window>
