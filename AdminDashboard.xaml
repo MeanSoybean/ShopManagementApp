@@ -74,7 +74,25 @@
             </Fluent:RibbonTabItem>
 
             <Fluent:RibbonTabItem Header="Sales">
+                <Fluent:RibbonGroupBox Header="Purchase">
+                    <Fluent:Button Header="Add" Click="AddPurchaseButton_Clicked">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Images/greenplus.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
 
+                    <Fluent:Button Header="Edit" Click="EditPurchaseButton_Clicked">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Images/bluepencil.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button Header="Delete" Click="DeletePurchaseButton_Clicked">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="/Images/redcross.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
             <Fluent:RibbonTabItem Header="Report">

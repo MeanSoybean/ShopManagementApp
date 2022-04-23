@@ -168,5 +168,26 @@ namespace ShopManagementApp
                 MasterDataUserControl.MasterDataAction.DeleteSelectedProduct
                 );
         }
+
+        private void AddPurchaseButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            salesUserControl.HandleParentEvent(
+                SalesUserControl.SalesUserAction.AddNewPurchase
+                );
+        }
+
+        private void EditPurchaseButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            salesUserControl.HandleParentEvent(
+                SalesUserControl.SalesUserAction.EditSelectedPurchase
+                );
+        }
+
+        private void DeletePurchaseButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            salesUserControl.HandleParentEvent(
+                SalesUserControl.SalesUserAction.DeleteSelectedPurchase
+                );
+        }
     }
 }
