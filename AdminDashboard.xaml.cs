@@ -32,6 +32,7 @@ namespace ShopManagementApp
 
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
             var screens = new ObservableCollection<TabItem>()
             {
                 new TabItem() { Content = new MasterDataUserControl() },

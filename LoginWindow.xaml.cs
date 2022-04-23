@@ -99,6 +99,9 @@ namespace ShopManagementApp
                             Properties.Settings.Default.Save();
 
                         }
+                        AdminDashboard mainWindow = new AdminDashboard();
+                        mainWindow.Show();
+                        Close();
 
                     }
                     else
@@ -135,7 +138,9 @@ namespace ShopManagementApp
                             Properties.Settings.Default.Save();
 
                         }
-
+                        AdminDashboard mainWindow = new AdminDashboard();
+                        mainWindow.Show();
+                        Close();
                     }
                     else
                     {
@@ -204,13 +209,107 @@ namespace ShopManagementApp
 
                 builder.DataSource = $"{server}\\{instance}";
                 builder.InitialCatalog = database;
-                builder.IntegratedSecurity = true;
-                builder.ConnectTimeout = 3; // s
+                builder.UserID = username;
+                builder.Password = password;
+                //  builder.IntegratedSecurity = true;
+                // builder.ConnectTimeout = 3; // s
 
                 result = builder.ToString();
                 return result;
             }
         }
+
+
+        class SqlDataAccess
+        {
+            private SqlConnection _connection;
+            public SqlDataAccess(string connectionString)
+            {
+                _connection = new SqlConnection(connectionString);
+            }
+
+            /// <summary>
+            /// Kiểm tra xem có thể kết nối hay không
+            /// </summary>
+            /// <returns></returns>
+            public bool CanConnect()
+            {
+                bool result = true;
+
+                try
+                {
+                    _connection.Open();
+                    _connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    result = false;
+                }
+                return result;
+            }
+
+            public void Connect()
+            {
+                _connection.Open();
+            }
+
+            public Category GetCategoryById(int id)
+            {
+                var sql = "select * from Category where category_id=@CatId";
+                var command = new SqlCommand(sql, _connection);
+
+                command.Parameters.Add("CatId", SqlDbType.Int).Value = id;
+
+                var reader = command.ExecuteReader();
+
+                Category result = null;
+
+                if (reader.Read()) // ORM - Object relational mapping
+                {
+                    var catId = (int)reader["ID"];
+                    var catName = (string)reader["Name"];
+
+                    result = new Category()
+                    {
+                        ID = catId,
+                        Name = catName,
+                    };
+                }
+
+                return result;
+            }
+        }
+
+
+        // DTO - Data transfer object
+        class Category
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+        }
+
+        // Business layer
+        class Business
+        {
+            SqlDataAccess _dao;
+
+            public Business(SqlDataAccess dao)
+            {
+                _dao = dao;
+            }
+
+            public Category GetCategoryById(int id)
+            {
+                Category result = _dao.GetCategoryById(id);
+
+                return result;
+            }
+        }
+
+        Business _bus = null;
+
+
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
