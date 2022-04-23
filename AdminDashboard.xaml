@@ -83,9 +83,17 @@
 
         </Fluent:Ribbon>
         <TabControl Name="Tabs" SelectedIndex="{Binding ElementName=ribbon, Path=SelectedTabIndex}">
-            <TabItem Header="Master Data"></TabItem>
-            <TabItem Header="Sales"></TabItem>
-            <TabItem Header="Report"></TabItem>
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
         </TabControl>
     </DockPanel>
 </Fluent:RibbonWindow>
