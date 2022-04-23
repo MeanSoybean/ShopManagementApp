@@ -48,7 +48,8 @@ namespace ShopManagementApp
                     if (k.Equals(passwordBox1.Password))
                     {
                         MessageBox.Show("Login successfully");
-
+                        AppConfig.SetValue(AppConfig.Password, passwordBox1.Password);
+                        AppConfig.SetValue(AppConfig.Username, textBoxUser.Text);
                         if (checkBox1.IsChecked == true)
                         {
                             Properties.Settings.Default.username = textBoxUser.Text;
@@ -84,7 +85,8 @@ namespace ShopManagementApp
                     if (k.Equals(passwordBox1.Password))
                     {
                         MessageBox.Show("Login successfully");
-
+                        AppConfig.SetValue(AppConfig.Password, passwordBox1.Password);
+                        AppConfig.SetValue(AppConfig.Username, textBoxUser.Text);
                         if (checkBox1.IsChecked == true)
                         {
                             Properties.Settings.Default.username = textBoxUser.Text;
@@ -119,7 +121,8 @@ namespace ShopManagementApp
                     if (k.Equals(passwordBox1.Password))
                     {
                         MessageBox.Show("Login successfully");
-
+                        AppConfig.SetValue(AppConfig.Password, passwordBox1.Password);
+                        AppConfig.SetValue(AppConfig.Username, textBoxUser.Text);
                         if (checkBox1.IsChecked == true)
                         {
                             Properties.Settings.Default.username = textBoxUser.Text;
